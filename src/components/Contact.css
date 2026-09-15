@@ -1,0 +1,231 @@
+#contact {
+  padding: 100px 20px;
+  overflow: hidden;
+}
+
+.contact-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-left h2 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-h);
+  margin-bottom: 20px;
+}
+
+.contact-left h2 .highlight {
+  color: var(--accent);
+}
+
+.contact-left > p {
+  font-size: 16px;
+  color: var(--text);
+  max-width: 480px;
+  margin-bottom: 35px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 40px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.info-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--text);
+  opacity: 0.7;
+  margin-bottom: 2px;
+}
+
+.info-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.find-me-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--text);
+  opacity: 0.7;
+  margin-bottom: 14px;
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 35px;
+}
+
+.social-row a {
+  color: var(--text);
+  font-size: 20px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.social-row a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.contact-right {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.orbit-circle {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 25%, transparent) 0%,
+    transparent 70%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 22px;
+}
+
+.orbit-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-h);
+  font-size: 16px;
+}
+
+.orbit-icon-1 { top: 0; left: 40%; }
+.orbit-icon-2 { top: 15%; right: 0; }
+.orbit-icon-3 { bottom: 10%; left: 0; }
+.orbit-icon-4 { bottom: 0; left: 35%; }
+.orbit-icon-5 { top: 40%; right: -5%; }
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 480px;
+  margin-top: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 14px 16px;
+  background: var(--code-bg, #1a1a1f);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-h);
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent);
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  padding: 14px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px -8px var(--accent);
+  transition: transform 0.2s, box-shadow 0.2s;
+  align-self: flex-start;
+}
+
+.contact-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -6px var(--accent);
+}
+
+@media (max-width: 700px) {
+  .contact-content {
+    flex-direction: column;
+    text-align: left;
+  }
+
+  .contact-left h2 {
+    font-size: 32px;
+  }
+
+  .contact-right {
+    display: none;
+  }
+}
