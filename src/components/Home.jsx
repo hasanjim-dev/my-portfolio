@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
+import Typewriter from "typewriter-effect";
 
 function Home() {
   const [profile, setProfile] = useState(null);
@@ -34,8 +35,20 @@ function Home() {
 
               <h2>{profile.designation}</h2>
 
-              <p style={{ maxWidth: "500px" }}>
-                {profile.introduction}
+              {/* এখানে inline style যোগ করা হয়েছে */}
+              <p style={{ maxWidth: "500px", textTransform: "uppercase" }}>
+                <Typewriter
+                  options={{
+                    strings: [
+                      profile.introduction || "FULL STACK DEVELOPER",
+                      "FRONTEND DEVELOPER",
+                      "MERN STACK DEVELOPER",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                    deleteSpeed: 50,
+                  }}
+                />
               </p>
 
               <div className="hero-buttons">
