@@ -70,7 +70,7 @@ function Skills() {
   const [activeCategory, setActiveCategory] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/skills")
+    fetch("http://   https://my-portfolio-backend-u8gq.onrender.com/skills")
       .then((response) => response.json())
       .then((data) => {
         setSkills(data);

@@ -6,7 +6,7 @@ function Home() {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/profile")
+    fetch("http://   https://my-portfolio-backend-u8gq.onrender.com/profile")
       .then((response) => response.json())
       .then((data) => {
         setProfile(data);

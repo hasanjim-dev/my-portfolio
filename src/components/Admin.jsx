@@ -66,7 +66,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/admin/login",
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/admin/login",
         {
           method: "POST",
           headers: {
@@ -140,7 +140,7 @@ function Admin() {
   const loadProjects = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/projects"
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/projects"
       );
 
       const data = await response.json();
@@ -156,7 +156,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/projects",
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/projects",
         {
           method: "POST",
           headers: {
@@ -212,7 +212,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/projects/${editingProjectId}`,
+        `http://   https://my-portfolio-backend-u8gq.onrender.com/projects/${editingProjectId}`,
         {
           method: "PUT",
           headers: {
@@ -261,7 +261,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/projects/${id}`,
+        `http://   https://my-portfolio-backend-u8gq.onrender.com/projects/${id}`,
         {
           method: "DELETE",
         }
@@ -286,7 +286,7 @@ function Admin() {
   const loadCertificates = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/certificates"
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/certificates"
       );
 
       const data = await response.json();
@@ -318,7 +318,7 @@ function Admin() {
       formData.append("image", selectedImage);
 
       const response = await fetch(
-        "http://localhost:5000/upload",
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/upload",
         {
           method: "POST",
           body: formData,
@@ -359,7 +359,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/certificates",
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/certificates",
         {
           method: "POST",
           headers: {
@@ -428,7 +428,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/certificates/${editingCertificateId}`,
+        `http://   https://my-portfolio-backend-u8gq.onrender.com/certificates/${editingCertificateId}`,
         {
           method: "PUT",
           headers: {
@@ -478,7 +478,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/certificates/${id}`,
+        `http://   https://my-portfolio-backend-u8gq.onrender.com/certificates/${id}`,
         {
           method: "DELETE",
         }
@@ -503,7 +503,7 @@ function Admin() {
   const loadProfile = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/profile"
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/profile"
       );
 
       const data = await response.json();
@@ -541,7 +541,7 @@ function Admin() {
       formData.append("image", selectedProfileImage);
 
       const response = await fetch(
-        "http://localhost:5000/upload",
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/upload",
         {
           method: "POST",
           body: formData,
@@ -581,7 +581,7 @@ function Admin() {
 
       if (profileId) {
         response = await fetch(
-          `http://localhost:5000/profile/${profileId}`,
+          `http://   https://my-portfolio-backend-u8gq.onrender.com/profile/${profileId}`,
           {
             method: "PUT",
             headers: {
@@ -597,7 +597,7 @@ function Admin() {
         );
       } else {
         response = await fetch(
-          "http://localhost:5000/profile",
+          "http://   https://my-portfolio-backend-u8gq.onrender.com/profile",
           {
             method: "POST",
             headers: {
@@ -639,7 +639,7 @@ function Admin() {
   const loadSkills = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/skills"
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/skills"
       );
 
       const data = await response.json();
@@ -655,7 +655,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/skills",
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/skills",
         {
           method: "POST",
           headers: {
@@ -702,7 +702,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/skills/${editingSkillId}`,
+        `http://   https://my-portfolio-backend-u8gq.onrender.com/skills/${editingSkillId}`,
         {
           method: "PUT",
           headers: {
@@ -747,7 +747,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/skills/${id}`,
+        `http://   https://my-portfolio-backend-u8gq.onrender.com/skills/${id}`,
         {
           method: "DELETE",
         }
@@ -774,7 +774,7 @@ function Admin() {
   const loadImages = async () => {
     try {
       const response = await fetch(
-        "http://localhost:5000/images"
+        "http://   https://my-portfolio-backend-u8gq.onrender.com/images"
       );
 
       const data = await response.json();
@@ -803,7 +803,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/images/${encodeURIComponent(
+        `http://   https://my-portfolio-backend-u8gq.onrender.com/images/${encodeURIComponent(
           filename
         )}`,
         {
