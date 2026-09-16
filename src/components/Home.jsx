@@ -46,7 +46,8 @@ function Home() {
                     ],
                     autoStart: true,
                     loop: true,
-                    deleteSpeed: 50,
+                    delay: 50,
+                    deleteSpeed: 40,
                   }}
                 />
               </p>

@@ -600,3 +600,11 @@ section h2::after {
 .certificate-card a:hover {
   text-decoration: underline;
 }
+
+
+.Typewriter__wrapper {
+  color: #d1aef1; 
+}
+.Typewriter__cursor {
+  color: #c9a0ef; 
+}
