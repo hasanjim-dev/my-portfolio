@@ -18,7 +18,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://   https://my-portfolio-backend-u8gq.onrender.com/contact", {
+    const response = await fetch("https://my-portfolio-backend-u8gq.onrender.com/contact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

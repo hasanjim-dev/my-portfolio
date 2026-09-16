@@ -5,7 +5,7 @@ function Certificates() {
   const [certificates, setCertificates] = useState([]);
 
   useEffect(() => {
-    fetch("http://   https://my-portfolio-backend-u8gq.onrender.com/certificates")
+    fetch("https://my-portfolio-backend-u8gq.onrender.com/certificates")
       .then((response) => response.json())
       .then((data) => {
         setCertificates(data);

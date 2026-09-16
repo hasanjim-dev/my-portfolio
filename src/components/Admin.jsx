@@ -66,7 +66,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/admin/login",
+        "https://my-portfolio-backend-u8gq.onrender.com/admin/login",
         {
           method: "POST",
           headers: {
