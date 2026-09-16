@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API = "https://my-portfolio-backend-u8gq.onrender.com";
+
 function Admin() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState("");
@@ -65,19 +67,16 @@ function Admin() {
     setLoginLoading(true);
 
     try {
-      const response = await fetch(
-        "https://my-portfolio-backend-u8gq.onrender.com/admin/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username,
-            password,
-          }),
-        }
-      );
+      const response = await fetch(`${API}/admin/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
 
       const data = await response.json();
 
@@ -139,9 +138,7 @@ function Admin() {
 
   const loadProjects = async () => {
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/projects"
-      );
+      const response = await fetch(`${API}/projects`);
 
       const data = await response.json();
 
@@ -155,22 +152,19 @@ function Admin() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/projects",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            description,
-            technology,
-            github_link: githubLink,
-            live_link: liveLink,
-          }),
-        }
-      );
+      const response = await fetch(`${API}/projects`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          description,
+          technology,
+          github_link: githubLink,
+          live_link: liveLink,
+        }),
+      });
 
       const data = await response.json();
 
@@ -211,22 +205,19 @@ function Admin() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `http://   https://my-portfolio-backend-u8gq.onrender.com/projects/${editingProjectId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            description,
-            technology,
-            github_link: githubLink,
-            live_link: liveLink,
-          }),
-        }
-      );
+      const response = await fetch(`${API}/projects/${editingProjectId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          description,
+          technology,
+          github_link: githubLink,
+          live_link: liveLink,
+        }),
+      });
 
       const data = await response.json();
 
@@ -260,12 +251,9 @@ function Admin() {
     }
 
     try {
-      const response = await fetch(
-        `http://   https://my-portfolio-backend-u8gq.onrender.com/projects/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${API}/projects/${id}`, {
+        method: "DELETE",
+      });
 
       const data = await response.json();
 
@@ -285,9 +273,7 @@ function Admin() {
 
   const loadCertificates = async () => {
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/certificates"
-      );
+      const response = await fetch(`${API}/certificates`);
 
       const data = await response.json();
 
@@ -317,13 +303,10 @@ function Admin() {
 
       formData.append("image", selectedImage);
 
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch(`${API}/upload`, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await response.json();
 
@@ -358,22 +341,19 @@ function Admin() {
     }
 
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/certificates",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: certificateName,
-            issuer,
-            date: certificateDate,
-            certificate_link: certificateLink,
-            image: imageUrl,
-          }),
-        }
-      );
+      const response = await fetch(`${API}/certificates`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: certificateName,
+          issuer,
+          date: certificateDate,
+          certificate_link: certificateLink,
+          image: imageUrl,
+        }),
+      });
 
       const data = await response.json();
 
@@ -428,7 +408,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://   https://my-portfolio-backend-u8gq.onrender.com/certificates/${editingCertificateId}`,
+        `${API}/certificates/${editingCertificateId}`,
         {
           method: "PUT",
           headers: {
@@ -477,12 +457,9 @@ function Admin() {
     }
 
     try {
-      const response = await fetch(
-        `http://   https://my-portfolio-backend-u8gq.onrender.com/certificates/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${API}/certificates/${id}`, {
+        method: "DELETE",
+      });
 
       const data = await response.json();
 
@@ -502,9 +479,7 @@ function Admin() {
 
   const loadProfile = async () => {
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/profile"
-      );
+      const response = await fetch(`${API}/profile`);
 
       const data = await response.json();
 
@@ -540,13 +515,10 @@ function Admin() {
 
       formData.append("image", selectedProfileImage);
 
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch(`${API}/upload`, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await response.json();
 
@@ -580,37 +552,31 @@ function Admin() {
       let response;
 
       if (profileId) {
-        response = await fetch(
-          `http://   https://my-portfolio-backend-u8gq.onrender.com/profile/${profileId}`,
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: profileName,
-              designation,
-              introduction,
-              profile_image: imageUrl,
-            }),
-          }
-        );
+        response = await fetch(`${API}/profile/${profileId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: profileName,
+            designation,
+            introduction,
+            profile_image: imageUrl,
+          }),
+        });
       } else {
-        response = await fetch(
-          "http://   https://my-portfolio-backend-u8gq.onrender.com/profile",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name: profileName,
-              designation,
-              introduction,
-              profile_image: imageUrl,
-            }),
-          }
-        );
+        response = await fetch(`${API}/profile`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: profileName,
+            designation,
+            introduction,
+            profile_image: imageUrl,
+          }),
+        });
       }
 
       const data = await response.json();
@@ -638,9 +604,7 @@ function Admin() {
 
   const loadSkills = async () => {
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/skills"
-      );
+      const response = await fetch(`${API}/skills`);
 
       const data = await response.json();
 
@@ -654,19 +618,16 @@ function Admin() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/skills",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: skillName,
-            level: skillLevel,
-          }),
-        }
-      );
+      const response = await fetch(`${API}/skills`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: skillName,
+          level: skillLevel,
+        }),
+      });
 
       const data = await response.json();
 
@@ -701,19 +662,16 @@ function Admin() {
     e.preventDefault();
 
     try {
-      const response = await fetch(
-        `http://   https://my-portfolio-backend-u8gq.onrender.com/skills/${editingSkillId}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: skillName,
-            level: skillLevel,
-          }),
-        }
-      );
+      const response = await fetch(`${API}/skills/${editingSkillId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: skillName,
+          level: skillLevel,
+        }),
+      });
 
       const data = await response.json();
 
@@ -746,12 +704,9 @@ function Admin() {
     }
 
     try {
-      const response = await fetch(
-        `http://   https://my-portfolio-backend-u8gq.onrender.com/skills/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`${API}/skills/${id}`, {
+        method: "DELETE",
+      });
 
       const data = await response.json();
 
@@ -773,9 +728,7 @@ function Admin() {
 
   const loadImages = async () => {
     try {
-      const response = await fetch(
-        "http://   https://my-portfolio-backend-u8gq.onrender.com/images"
-      );
+      const response = await fetch(`${API}/images`);
 
       const data = await response.json();
 
@@ -803,9 +756,7 @@ function Admin() {
 
     try {
       const response = await fetch(
-        `http://   https://my-portfolio-backend-u8gq.onrender.com/images/${encodeURIComponent(
-          filename
-        )}`,
+        `${API}/images/${encodeURIComponent(filename)}`,
         {
           method: "DELETE",
         }
@@ -845,22 +796,17 @@ function Admin() {
   if (!isLoggedIn) {
     return (
       <div className="admin-login-page">
-
         <div className="admin-login-box">
-
           <h1>Admin Login</h1>
 
           <p>Login to manage your portfolio.</p>
 
           <form onSubmit={handleLogin}>
-
             <input
               type="text"
               placeholder="Username"
               value={username}
-              onChange={(e) =>
-                setUsername(e.target.value)
-              }
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
 
@@ -868,25 +814,15 @@ function Admin() {
               type="password"
               placeholder="Password"
               value={password}
-              onChange={(e) =>
-                setPassword(e.target.value)
-              }
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
 
-            <button
-              type="submit"
-              disabled={loginLoading}
-            >
-              {loginLoading
-                ? "Logging in..."
-                : "Login"}
+            <button type="submit" disabled={loginLoading}>
+              {loginLoading ? "Logging in..." : "Login"}
             </button>
-
           </form>
-
         </div>
-
       </div>
     );
   }
@@ -897,7 +833,6 @@ function Admin() {
 
   return (
     <div className="admin-page">
-
       <div
         style={{
           display: "flex",
@@ -905,27 +840,18 @@ function Admin() {
           alignItems: "center",
         }}
       >
-
         <div>
-
           <h1>Admin Dashboard</h1>
 
-          <p>
-            Manage your portfolio website from here.
-          </p>
-
+          <p>Manage your portfolio website from here.</p>
         </div>
 
-        <button onClick={handleLogout}>
-          Logout
-        </button>
-
+        <button onClick={handleLogout}>Logout</button>
       </div>
 
       {/* ADMIN MENU */}
 
       <div className="admin-menu">
-
         <button
           onClick={() => {
             setShowProjectForm(true);
@@ -1079,25 +1005,20 @@ function Admin() {
         >
           Edit Profile
         </button>
-
       </div>
 
       {/* PROFILE FORM */}
 
       {showProfileForm && (
         <div className="profile-form">
-
           <h2>Edit Profile</h2>
 
           <form onSubmit={handleSaveProfile}>
-
             <input
               type="text"
               placeholder="Your Name"
               value={profileName}
-              onChange={(e) =>
-                setProfileName(e.target.value)
-              }
+              onChange={(e) => setProfileName(e.target.value)}
               required
             />
 
@@ -1105,22 +1026,16 @@ function Admin() {
               type="text"
               placeholder="Designation"
               value={designation}
-              onChange={(e) =>
-                setDesignation(e.target.value)
-              }
+              onChange={(e) => setDesignation(e.target.value)}
             />
 
             <textarea
               placeholder="Introduction"
               value={introduction}
-              onChange={(e) =>
-                setIntroduction(e.target.value)
-              }
+              onChange={(e) => setIntroduction(e.target.value)}
             ></textarea>
 
-            <label>
-              Profile Image
-            </label>
+            <label>Profile Image</label>
 
             <input
               type="file"
@@ -1129,17 +1044,12 @@ function Admin() {
             />
 
             {selectedProfileImage && (
-              <p>
-                Selected: {selectedProfileImage.name}
-              </p>
+              <p>Selected: {selectedProfileImage.name}</p>
             )}
 
             {profileImage && !selectedProfileImage && (
               <div>
-
-                <p>
-                  Current Profile Image:
-                </p>
+                <p>Current Profile Image:</p>
 
                 <img
                   src={profileImage}
@@ -1150,14 +1060,10 @@ function Admin() {
                     marginBottom: "10px",
                   }}
                 />
-
               </div>
             )}
 
-            <button
-              type="submit"
-              disabled={uploadingProfileImage}
-            >
+            <button type="submit" disabled={uploadingProfileImage}>
               {uploadingProfileImage
                 ? "Uploading..."
                 : profileId
@@ -1174,9 +1080,7 @@ function Admin() {
             >
               Cancel
             </button>
-
           </form>
-
         </div>
       )}
 
@@ -1184,37 +1088,25 @@ function Admin() {
 
       {showProjectForm && (
         <div className="project-form">
-
-          <h2>
-            {editingProjectId
-              ? "Edit Project"
-              : "Add New Project"}
-          </h2>
+          <h2>{editingProjectId ? "Edit Project" : "Add New Project"}</h2>
 
           <form
             onSubmit={
-              editingProjectId
-                ? handleUpdateProject
-                : handleAddProject
+              editingProjectId ? handleUpdateProject : handleAddProject
             }
           >
-
             <input
               type="text"
               placeholder="Project Name"
               value={name}
-              onChange={(e) =>
-                setName(e.target.value)
-              }
+              onChange={(e) => setName(e.target.value)}
               required
             />
 
             <textarea
               placeholder="Project Description"
               value={description}
-              onChange={(e) =>
-                setDescription(e.target.value)
-              }
+              onChange={(e) => setDescription(e.target.value)}
               required
             ></textarea>
 
@@ -1222,33 +1114,25 @@ function Admin() {
               type="text"
               placeholder="Technology Used"
               value={technology}
-              onChange={(e) =>
-                setTechnology(e.target.value)
-              }
+              onChange={(e) => setTechnology(e.target.value)}
             />
 
             <input
               type="text"
               placeholder="GitHub Link"
               value={githubLink}
-              onChange={(e) =>
-                setGithubLink(e.target.value)
-              }
+              onChange={(e) => setGithubLink(e.target.value)}
             />
 
             <input
               type="text"
               placeholder="Live Demo Link"
               value={liveLink}
-              onChange={(e) =>
-                setLiveLink(e.target.value)
-              }
+              onChange={(e) => setLiveLink(e.target.value)}
             />
 
             <button type="submit">
-              {editingProjectId
-                ? "Update Project"
-                : "Save Project"}
+              {editingProjectId ? "Update Project" : "Save Project"}
             </button>
 
             <button
@@ -1260,9 +1144,7 @@ function Admin() {
             >
               Cancel
             </button>
-
           </form>
-
         </div>
       )}
 
@@ -1270,59 +1152,37 @@ function Admin() {
 
       {showProjects && (
         <div className="projects-list">
-
           <h2>Manage Projects</h2>
 
           {projects.length === 0 ? (
             <p>No projects found.</p>
           ) : (
             projects.map((project) => (
-              <div
-                key={project.id}
-                className="project-item"
-              >
-
+              <div key={project.id} className="project-item">
                 <h3>{project.name}</h3>
 
                 <p>{project.description}</p>
 
                 <p>
-                  <strong>Technology:</strong>{" "}
-                  {project.technology}
+                  <strong>Technology:</strong> {project.technology}
                 </p>
 
                 {project.github_link && (
-                  <p>
-                    GitHub: {project.github_link}
-                  </p>
+                  <p>GitHub: {project.github_link}</p>
                 )}
 
-                {project.live_link && (
-                  <p>
-                    Live Demo: {project.live_link}
-                  </p>
-                )}
+                {project.live_link && <p>Live Demo: {project.live_link}</p>}
 
-                <button
-                  onClick={() =>
-                    handleEditProject(project)
-                  }
-                >
+                <button onClick={() => handleEditProject(project)}>
                   Edit
                 </button>
 
-                <button
-                  onClick={() =>
-                    handleDeleteProject(project.id)
-                  }
-                >
+                <button onClick={() => handleDeleteProject(project.id)}>
                   Delete
                 </button>
-
               </div>
             ))
           )}
-
         </div>
       )}
 
@@ -1330,7 +1190,6 @@ function Admin() {
 
       {showCertificateForm && (
         <div className="certificate-form">
-
           <h2>
             {editingCertificateId
               ? "Edit Certificate"
@@ -1344,14 +1203,11 @@ function Admin() {
                 : handleAddCertificate
             }
           >
-
             <input
               type="text"
               placeholder="Certificate Name"
               value={certificateName}
-              onChange={(e) =>
-                setCertificateName(e.target.value)
-              }
+              onChange={(e) => setCertificateName(e.target.value)}
               required
             />
 
@@ -1359,32 +1215,24 @@ function Admin() {
               type="text"
               placeholder="Issuing Organization"
               value={issuer}
-              onChange={(e) =>
-                setIssuer(e.target.value)
-              }
+              onChange={(e) => setIssuer(e.target.value)}
             />
 
             <input
               type="text"
               placeholder="Certificate Date"
               value={certificateDate}
-              onChange={(e) =>
-                setCertificateDate(e.target.value)
-              }
+              onChange={(e) => setCertificateDate(e.target.value)}
             />
 
             <input
               type="text"
               placeholder="Certificate Link"
               value={certificateLink}
-              onChange={(e) =>
-                setCertificateLink(e.target.value)
-              }
+              onChange={(e) => setCertificateLink(e.target.value)}
             />
 
-            <label>
-              Certificate Image
-            </label>
+            <label>Certificate Image</label>
 
             <input
               type="file"
@@ -1392,22 +1240,13 @@ function Admin() {
               onChange={handleImageSelect}
             />
 
-            {selectedImage && (
-              <p>
-                Selected: {selectedImage.name}
-              </p>
-            )}
+            {selectedImage && <p>Selected: {selectedImage.name}</p>}
 
             {certificateImage && !selectedImage && (
-              <p>
-                Current Image: {certificateImage}
-              </p>
+              <p>Current Image: {certificateImage}</p>
             )}
 
-            <button
-              type="submit"
-              disabled={uploadingImage}
-            >
+            <button type="submit" disabled={uploadingImage}>
               {uploadingImage
                 ? "Uploading..."
                 : editingCertificateId
@@ -1425,9 +1264,7 @@ function Admin() {
             >
               Cancel
             </button>
-
           </form>
-
         </div>
       )}
 
@@ -1435,28 +1272,21 @@ function Admin() {
 
       {showCertificates && (
         <div className="certificates-list">
-
           <h2>Manage Certificates</h2>
 
           {certificates.length === 0 ? (
             <p>No certificates found.</p>
           ) : (
             certificates.map((certificate) => (
-              <div
-                key={certificate.id}
-                className="certificate-item"
-              >
-
+              <div key={certificate.id} className="certificate-item">
                 <h3>{certificate.name}</h3>
 
                 <p>
-                  <strong>Issuer:</strong>{" "}
-                  {certificate.issuer}
+                  <strong>Issuer:</strong> {certificate.issuer}
                 </p>
 
                 <p>
-                  <strong>Date:</strong>{" "}
-                  {certificate.date}
+                  <strong>Date:</strong> {certificate.date}
                 </p>
 
                 {certificate.image && (
@@ -1472,34 +1302,21 @@ function Admin() {
                 )}
 
                 {certificate.certificate_link && (
-                  <p>
-                    Certificate Link:{" "}
-                    {certificate.certificate_link}
-                  </p>
+                  <p>Certificate Link: {certificate.certificate_link}</p>
                 )}
 
-                <button
-                  onClick={() =>
-                    handleEditCertificate(certificate)
-                  }
-                >
+                <button onClick={() => handleEditCertificate(certificate)}>
                   Edit
                 </button>
 
                 <button
-                  onClick={() =>
-                    handleDeleteCertificate(
-                      certificate.id
-                    )
-                  }
+                  onClick={() => handleDeleteCertificate(certificate.id)}
                 >
                   Delete
                 </button>
-
               </div>
             ))
           )}
-
         </div>
       )}
 
@@ -1507,28 +1324,16 @@ function Admin() {
 
       {showSkillForm && (
         <div className="skill-form">
-
-          <h2>
-            {editingSkillId
-              ? "Edit Skill"
-              : "Add New Skill"}
-          </h2>
+          <h2>{editingSkillId ? "Edit Skill" : "Add New Skill"}</h2>
 
           <form
-            onSubmit={
-              editingSkillId
-                ? handleUpdateSkill
-                : handleAddSkill
-            }
+            onSubmit={editingSkillId ? handleUpdateSkill : handleAddSkill}
           >
-
             <input
               type="text"
               placeholder="Skill Name"
               value={skillName}
-              onChange={(e) =>
-                setSkillName(e.target.value)
-              }
+              onChange={(e) => setSkillName(e.target.value)}
               required
             />
 
@@ -1536,15 +1341,11 @@ function Admin() {
               type="text"
               placeholder="Skill Level"
               value={skillLevel}
-              onChange={(e) =>
-                setSkillLevel(e.target.value)
-              }
+              onChange={(e) => setSkillLevel(e.target.value)}
             />
 
             <button type="submit">
-              {editingSkillId
-                ? "Update Skill"
-                : "Save Skill"}
+              {editingSkillId ? "Update Skill" : "Save Skill"}
             </button>
 
             <button
@@ -1558,9 +1359,7 @@ function Admin() {
             >
               Cancel
             </button>
-
           </form>
-
         </div>
       )}
 
@@ -1568,45 +1367,27 @@ function Admin() {
 
       {showSkills && (
         <div className="skills-list">
-
           <h2>Manage Skills</h2>
 
           {skills.length === 0 ? (
             <p>No skills found.</p>
           ) : (
             skills.map((skill) => (
-              <div
-                key={skill.id}
-                className="skill-item"
-              >
-
+              <div key={skill.id} className="skill-item">
                 <h3>{skill.name}</h3>
 
                 <p>
-                  <strong>Level:</strong>{" "}
-                  {skill.level}
+                  <strong>Level:</strong> {skill.level}
                 </p>
 
-                <button
-                  onClick={() =>
-                    handleEditSkill(skill)
-                  }
-                >
-                  Edit
-                </button>
+                <button onClick={() => handleEditSkill(skill)}>Edit</button>
 
-                <button
-                  onClick={() =>
-                    handleDeleteSkill(skill.id)
-                  }
-                >
+                <button onClick={() => handleDeleteSkill(skill.id)}>
                   Delete
                 </button>
-
               </div>
             ))
           )}
-
         </div>
       )}
 
@@ -1614,7 +1395,6 @@ function Admin() {
 
       {showImages && (
         <div className="images-list">
-
           <h2>Manage Images</h2>
 
           {images.length === 0 ? (
@@ -1631,7 +1411,6 @@ function Admin() {
                   borderRadius: "8px",
                 }}
               >
-
                 <img
                   src={image.url}
                   alt={image.filename}
@@ -1645,27 +1424,17 @@ function Admin() {
                 />
 
                 <p>
-                  <strong>File:</strong>{" "}
-                  {image.filename}
+                  <strong>File:</strong> {image.filename}
                 </p>
 
-                <button
-                  onClick={() =>
-                    handleDeleteImage(
-                      image.filename
-                    )
-                  }
-                >
+                <button onClick={() => handleDeleteImage(image.filename)}>
                   Delete
                 </button>
-
               </div>
             ))
           )}
-
         </div>
       )}
-
     </div>
   );
 }
