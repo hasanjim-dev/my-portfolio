@@ -49,16 +49,43 @@ html {
   color: white !important;
 }
 
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-h);
+  font-size: 26px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
 @media (max-width: 700px) {
   .navbar {
-    flex-direction: column;
-    gap: 12px;
     padding: 16px 20px;
+    position: relative;
   }
+
+  .menu-toggle {
+    display: block;
+  }
+
   .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    z-index: 99;
+  }
+
+  .nav-links-open {
+    display: flex;
   }
 }
 
@@ -263,6 +290,11 @@ section h2::after {
   }
   .home-left {
     text-align: center;
+    order: 2;
+  }
+  .home-right {
+    order: 1;
+    margin-bottom: 10px;
   }
   .hero-buttons,
   .social-icons {
@@ -275,8 +307,8 @@ section h2::after {
     font-size: 20px;
   }
   .profile-image-wrapper {
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
   }
 }
 
@@ -601,10 +633,9 @@ section h2::after {
   text-decoration: underline;
 }
 
-
 .Typewriter__wrapper {
-  color: #d1aef1; 
+  color: #d1aef1;
 }
 .Typewriter__cursor {
-  color: #c9a0ef; 
+  color: #c9a0ef;
 }
