@@ -24,15 +24,7 @@ function Navbar() {
         <a href="#projects" onClick={closeMenu}>Projects</a>
         <a href="#certificates" onClick={closeMenu}>Certificates</a>
         <a href="#contact" onClick={closeMenu}>Contact</a>
-        
-          href="/resume.pdf"
-          target="_blank"
-          rel="noreferrer"
-          className="resume-btn"
-          onClick={closeMenu}
-        
-          Resume
-        
+        <a href="/resume.pdf" target="_blank" rel="noreferrer" className="resume-btn" onClick={closeMenu}>Resume</a>
       </div>
     </nav>
   );

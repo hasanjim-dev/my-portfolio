@@ -61,7 +61,7 @@ html {
 
 @media (max-width: 700px) {
   .navbar {
-    padding: 16px 20px;
+    padding: 14px 20px;
     position: relative;
   }
 
@@ -284,9 +284,14 @@ section h2::after {
 }
 
 @media (max-width: 900px) {
+  #home {
+    padding: 40px 20px;
+    min-height: auto;
+  }
   .home-content {
     flex-direction: column;
     text-align: center;
+    gap: 20px;
   }
   .home-left {
     text-align: center;
@@ -294,21 +299,39 @@ section h2::after {
   }
   .home-right {
     order: 1;
+    margin-bottom: 0;
+  }
+  .status-badge {
     margin-bottom: 10px;
+  }
+  .intro {
+    font-size: 15px;
+    margin-bottom: 4px;
   }
   .hero-buttons,
   .social-icons {
     justify-content: center;
   }
+  .hero-buttons {
+    margin-top: 15px;
+  }
+  .social-icons {
+    margin-top: 15px;
+  }
   #home h1 {
-    font-size: 36px;
+    font-size: 30px;
+    margin: 6px 0;
   }
   #home h2 {
-    font-size: 20px;
+    font-size: 17px;
+    margin: 6px 0 10px;
+  }
+  #home p {
+    font-size: 15px;
   }
   .profile-image-wrapper {
-    width: 220px;
-    height: 220px;
+    width: 160px;
+    height: 160px;
   }
 }
 
