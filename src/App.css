@@ -283,13 +283,25 @@ section h2::after {
 }
 
 @keyframes glow-pulse {
-  0%, 100% { transform: scale(1); opacity: 0.4; }
-  50% { transform: scale(1.02); opacity: 0.7; }
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+
+  50% {
+    transform: scale(1.02);
+    opacity: 0.7;
+  }
 }
 
 @keyframes glow-pulse-soft {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+  0%, 100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
 }
 
 .hero-buttons {
@@ -351,53 +363,67 @@ section h2::after {
     padding: 50px 20px 30px;
     min-height: auto;
   }
+
   .home-content {
     flex-direction: column;
     text-align: center;
     gap: 18px;
   }
+
   .home-left {
     text-align: center;
     order: 2;
+    transform: translateY(25px);
   }
+
   .home-right {
     order: 1;
     margin-bottom: 0;
   }
+
   .status-badge {
     margin-bottom: 10px;
     font-size: 13px;
     padding: 6px 14px;
   }
+
   .intro {
     font-size: 14px;
     margin-bottom: 6px;
   }
+
   .hero-buttons,
   .social-icons {
     justify-content: center;
   }
+
   .hero-buttons {
     margin-top: 18px;
   }
+
   .social-icons {
     margin-top: 18px;
   }
+
   #home h1 {
     font-size: 28px;
     margin: 8px 0;
   }
+
   #home h2 {
     font-size: 16px;
     margin: 8px 0 14px;
   }
+
   #home p {
     font-size: 14px;
   }
+
   .profile-image-wrapper-outer {
     width: 200px;
     height: 200px;
   }
+
   .profile-image-wrapper {
     width: 200px;
     height: 200px;
@@ -728,6 +754,7 @@ section h2::after {
 .Typewriter__wrapper {
   color: #d1aef1;
 }
+
 .Typewriter__cursor {
   color: #c9a0ef;
 }
