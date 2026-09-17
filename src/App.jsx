@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import ParticleBackground, { FastDots } from "./components/ParticleBackground";
@@ -13,6 +14,17 @@ import Admin from "./components/Admin";
 import AdminLogin from "./components/AdminLogin";
 
 function Portfolio() {
+  useEffect(() => {
+    // Prevent browser from restoring the previous scroll position
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    // Always start the portfolio from the Home section
+    window.history.replaceState(null, "", "#home");
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <ParticleBackground />
