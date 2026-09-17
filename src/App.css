@@ -285,13 +285,13 @@ section h2::after {
 
 @media (max-width: 900px) {
   #home {
-    padding: 30px 20px;
-    min-height: 100vh;
+    padding: 50px 20px 30px;
+    min-height: auto;
   }
   .home-content {
     flex-direction: column;
     text-align: center;
-    gap: 12px;
+    gap: 18px;
   }
   .home-left {
     text-align: center;
@@ -302,31 +302,31 @@ section h2::after {
     margin-bottom: 0;
   }
   .status-badge {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-size: 13px;
     padding: 6px 14px;
   }
   .intro {
     font-size: 14px;
-    margin-bottom: 2px;
+    margin-bottom: 6px;
   }
   .hero-buttons,
   .social-icons {
     justify-content: center;
   }
   .hero-buttons {
-    margin-top: 12px;
+    margin-top: 18px;
   }
   .social-icons {
-    margin-top: 12px;
+    margin-top: 18px;
   }
   #home h1 {
     font-size: 28px;
-    margin: 4px 0;
+    margin: 8px 0;
   }
   #home h2 {
     font-size: 16px;
-    margin: 4px 0 8px;
+    margin: 8px 0 14px;
   }
   #home p {
     font-size: 14px;
