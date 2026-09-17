@@ -286,7 +286,7 @@ section h2::after {
 @media (max-width: 900px) {
   #home {
     padding: 30px 20px;
-    min-height: auto;
+    min-height: 100vh;
   }
   .home-content {
     flex-direction: column;
