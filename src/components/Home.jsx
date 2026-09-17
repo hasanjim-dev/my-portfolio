@@ -35,7 +35,6 @@ function Home() {
 
               <h2>{profile.designation}</h2>
 
-              {/* এখানে inline style যোগ করা হয়েছে */}
               <p style={{ maxWidth: "500px", textTransform: "uppercase" }}>
                 <Typewriter
                   options={{
@@ -90,12 +89,17 @@ function Home() {
 
             {profile.profile_image && (
               <div className="home-right">
-                <div className="profile-image-wrapper">
-                  <img
-                    src={profile.profile_image}
-                    alt={profile.name}
-                    className="profile-image"
-                  />
+                <div className="profile-image-wrapper-outer">
+                  <div className="profile-glow-ring"></div>
+                  <div className="profile-ring-2"></div>
+                  <div className="profile-ring-1"></div>
+                  <div className="profile-image-wrapper">
+                    <img
+                      src={profile.profile_image}
+                      alt={profile.name}
+                      className="profile-image"
+                    />
+                  </div>
                 </div>
               </div>
             )}

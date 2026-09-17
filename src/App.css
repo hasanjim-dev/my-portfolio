@@ -128,7 +128,6 @@ section h2::after {
 /* ===== HOME / HERO ===== */
 #home {
   text-align: left;
-  background: var(--bg);
   min-height: 90vh;
   display: flex;
   align-items: center;
@@ -156,6 +155,7 @@ section h2::after {
   min-width: 300px;
   display: flex;
   justify-content: center;
+  overflow: visible;
 }
 
 .status-badge {
@@ -213,6 +213,13 @@ section h2::after {
   color: var(--text);
 }
 
+/* ===== PROFILE IMAGE + RINGS ===== */
+.profile-image-wrapper-outer {
+  position: relative;
+  width: 340px;
+  height: 340px;
+}
+
 .profile-image-wrapper {
   width: 340px;
   height: 340px;
@@ -220,6 +227,8 @@ section h2::after {
   overflow: hidden;
   border: 3px solid var(--border);
   box-shadow: var(--shadow);
+  position: relative;
+  z-index: 1;
 }
 
 .profile-image {
@@ -227,6 +236,60 @@ section h2::after {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.profile-glow-ring {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    transparent 65%,
+    color-mix(in srgb, var(--accent) 5%, transparent) 78%,
+    transparent 90%
+  );
+  animation: glow-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.profile-ring-1 {
+  position: absolute;
+  top: -18px;
+  left: -18px;
+  right: -18px;
+  bottom: -18px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 15%, transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.profile-ring-2 {
+  position: absolute;
+  top: -34px;
+  left: -34px;
+  right: -34px;
+  bottom: -34px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 0 20px 2px color-mix(in srgb, var(--accent) 8%, transparent);
+  animation: glow-pulse-soft 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.02); opacity: 0.7; }
+}
+
+@keyframes glow-pulse-soft {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
 }
 
 .hero-buttons {
@@ -330,6 +393,10 @@ section h2::after {
   }
   #home p {
     font-size: 14px;
+  }
+  .profile-image-wrapper-outer {
+    width: 200px;
+    height: 200px;
   }
   .profile-image-wrapper {
     width: 200px;

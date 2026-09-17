@@ -1,6 +1,7 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 
+import ParticleBackground, { FastDots } from "./components/ParticleBackground";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -14,6 +15,8 @@ import AdminLogin from "./components/AdminLogin";
 function Portfolio() {
   return (
     <div>
+      <ParticleBackground />
+      <FastDots />
       <Navbar />
       <Home />
       <About />

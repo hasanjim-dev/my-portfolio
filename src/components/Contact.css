@@ -137,6 +137,7 @@
   background: var(--accent);
   color: #fff;
   font-size: 22px;
+  animation: orbit-glow 2.5s ease-in-out infinite;
 }
 
 .orbit-icon {
@@ -151,13 +152,24 @@
   border: 1px solid var(--border);
   color: var(--text-h);
   font-size: 16px;
+  animation: orbit-float 3.5s ease-in-out infinite;
 }
 
-.orbit-icon-1 { top: 0; left: 40%; }
-.orbit-icon-2 { top: 15%; right: 0; }
-.orbit-icon-3 { bottom: 10%; left: 0; }
-.orbit-icon-4 { bottom: 0; left: 35%; }
-.orbit-icon-5 { top: 40%; right: -5%; }
+.orbit-icon-1 { top: 0; left: 40%; animation-delay: 0s; }
+.orbit-icon-2 { top: 15%; right: 0; animation-delay: 0.6s; }
+.orbit-icon-3 { bottom: 10%; left: 0; animation-delay: 1.2s; }
+.orbit-icon-4 { bottom: 0; left: 35%; animation-delay: 1.8s; }
+.orbit-icon-5 { top: 40%; right: -5%; animation-delay: 2.4s; }
+
+@keyframes orbit-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes orbit-glow {
+  0%, 100% { box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 60%, transparent); }
+  50% { box-shadow: 0 0 25px color-mix(in srgb, var(--accent) 90%, transparent); }
+}
 
 .contact-form {
   display: flex;
