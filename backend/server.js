@@ -6,6 +6,8 @@ const mysql = require("mysql2");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 const app = express();
 
@@ -14,7 +16,18 @@ app.use(express.json());
 
 
 // ==================================================
-// UPLOAD FOLDER
+// CLOUDINARY CONFIG
+// ==================================================
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+
+// ==================================================
+// UPLOAD FOLDER (kept for backward compatibility, unused for new uploads)
 // ==================================================
 
 const uploadFolder = path.join(__dirname, "uploads");
@@ -25,19 +38,14 @@ if (!fs.existsSync(uploadFolder)) {
 
 
 // ==================================================
-// IMAGE UPLOAD SETUP
+// IMAGE UPLOAD SETUP (NOW USES CLOUDINARY)
 // ==================================================
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, uploadFolder);
-  },
-
-  filename: (req, file, cb) => {
-    const uniqueName =
-      Date.now() + "-" + file.originalname;
-
-    cb(null, uniqueName);
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "portfolio",
+    allowed_formats: ["jpg", "jpeg", "png", "webp"]
   }
 });
 
@@ -47,7 +55,7 @@ const upload = multer({
 
 
 // ==================================================
-// MAKE UPLOADS PUBLIC
+// MAKE UPLOADS PUBLIC (old local files, if any)
 // ==================================================
 
 app.use(
@@ -590,7 +598,7 @@ app.put("/profile/:id", (req, res) => {
 
 
 // ==================================================
-// IMAGE UPLOAD
+// IMAGE UPLOAD (NOW USES CLOUDINARY - PERMANENT STORAGE)
 // ==================================================
 
 app.post(
@@ -603,8 +611,7 @@ app.post(
       });
     }
 
-    const imageUrl =
-      `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    const imageUrl = req.file.path;
 
     res.json({
       message: "Image uploaded successfully!",
@@ -615,7 +622,7 @@ app.post(
 
 
 // ==================================================
-// GET ALL UPLOADED IMAGES
+// GET ALL UPLOADED IMAGES (legacy local files only)
 // ==================================================
 
 app.get("/images", (req, res) => {
@@ -647,7 +654,7 @@ app.get("/images", (req, res) => {
 
 
 // ==================================================
-// DELETE UPLOADED IMAGE
+// DELETE UPLOADED IMAGE (legacy local files only)
 // ==================================================
 
 app.delete("/images/:filename", (req, res) => {

@@ -13,10 +13,12 @@
   "type": "commonjs",
   "dependencies": {
     "bcryptjs": "^3.0.3",
+    "cloudinary": "^1.41.3",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "multer": "^2.3.0",
+    "multer-storage-cloudinary": "^4.0.0",
     "mysql2": "^3.24.4"
   }
 }
