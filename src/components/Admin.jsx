@@ -36,6 +36,9 @@ function Admin() {
   const [technology, setTechnology] = useState("");
   const [githubLink, setGithubLink] = useState("");
   const [liveLink, setLiveLink] = useState("");
+  const [projectImage, setProjectImage] = useState("");
+  const [selectedProjectImage, setSelectedProjectImage] = useState(null);
+  const [uploadingProjectImage, setUploadingProjectImage] = useState(false);
 
   const [certificateName, setCertificateName] = useState("");
   const [issuer, setIssuer] = useState("");
@@ -133,6 +136,30 @@ function Admin() {
   }, []);
 
   // =========================
+  // SHARED IMAGE UPLOAD HELPER
+  // =========================
+
+  const uploadImageFile = async (file) => {
+    const formData = new FormData();
+
+    formData.append("image", file);
+
+    const response = await fetch(`${API}/upload`, {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.message);
+      return "";
+    }
+
+    return data.imageUrl;
+  };
+
+  // =========================
   // PROJECTS
   // =========================
 
@@ -148,8 +175,28 @@ function Admin() {
     }
   };
 
+  const handleProjectImageSelect = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      setSelectedProjectImage(file);
+    }
+  };
+
   const handleAddProject = async (e) => {
     e.preventDefault();
+
+    let imageUrl = projectImage;
+
+    if (selectedProjectImage) {
+      setUploadingProjectImage(true);
+      imageUrl = await uploadImageFile(selectedProjectImage);
+      setUploadingProjectImage(false);
+
+      if (!imageUrl) {
+        return;
+      }
+    }
 
     try {
       const response = await fetch(`${API}/projects`, {
@@ -163,6 +210,7 @@ function Admin() {
           technology,
           github_link: githubLink,
           live_link: liveLink,
+          image: imageUrl,
         }),
       });
 
@@ -176,6 +224,8 @@ function Admin() {
         setTechnology("");
         setGithubLink("");
         setLiveLink("");
+        setProjectImage("");
+        setSelectedProjectImage(null);
 
         setShowProjectForm(false);
 
@@ -196,6 +246,8 @@ function Admin() {
     setTechnology(project.technology || "");
     setGithubLink(project.github_link || "");
     setLiveLink(project.live_link || "");
+    setProjectImage(project.image || "");
+    setSelectedProjectImage(null);
 
     setShowProjectForm(true);
     setShowProjects(false);
@@ -203,6 +255,18 @@ function Admin() {
 
   const handleUpdateProject = async (e) => {
     e.preventDefault();
+
+    let imageUrl = projectImage;
+
+    if (selectedProjectImage) {
+      setUploadingProjectImage(true);
+      imageUrl = await uploadImageFile(selectedProjectImage);
+      setUploadingProjectImage(false);
+
+      if (!imageUrl) {
+        return;
+      }
+    }
 
     try {
       const response = await fetch(`${API}/projects/${editingProjectId}`, {
@@ -216,6 +280,7 @@ function Admin() {
           technology,
           github_link: githubLink,
           live_link: liveLink,
+          image: imageUrl,
         }),
       });
 
@@ -231,6 +296,8 @@ function Admin() {
         setTechnology("");
         setGithubLink("");
         setLiveLink("");
+        setProjectImage("");
+        setSelectedProjectImage(null);
 
         setShowProjectForm(false);
 
@@ -291,49 +358,15 @@ function Admin() {
     }
   };
 
-  const uploadImage = async () => {
-    if (!selectedImage) {
-      return "";
-    }
-
-    setUploadingImage(true);
-
-    try {
-      const formData = new FormData();
-
-      formData.append("image", selectedImage);
-
-      const response = await fetch(`${API}/upload`, {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return "";
-      }
-
-      return data.imageUrl;
-    } catch (error) {
-      console.log("Image upload error:", error);
-
-      alert("Image upload failed!");
-
-      return "";
-    } finally {
-      setUploadingImage(false);
-    }
-  };
-
   const handleAddCertificate = async (e) => {
     e.preventDefault();
 
     let imageUrl = certificateImage;
 
     if (selectedImage) {
-      imageUrl = await uploadImage();
+      setUploadingImage(true);
+      imageUrl = await uploadImageFile(selectedImage);
+      setUploadingImage(false);
 
       if (!imageUrl) {
         return;
@@ -399,7 +432,9 @@ function Admin() {
     let imageUrl = certificateImage;
 
     if (selectedImage) {
-      imageUrl = await uploadImage();
+      setUploadingImage(true);
+      imageUrl = await uploadImageFile(selectedImage);
+      setUploadingImage(false);
 
       if (!imageUrl) {
         return;
@@ -503,49 +538,15 @@ function Admin() {
     }
   };
 
-  const uploadProfileImage = async () => {
-    if (!selectedProfileImage) {
-      return profileImage;
-    }
-
-    setUploadingProfileImage(true);
-
-    try {
-      const formData = new FormData();
-
-      formData.append("image", selectedProfileImage);
-
-      const response = await fetch(`${API}/upload`, {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return profileImage;
-      }
-
-      return data.imageUrl;
-    } catch (error) {
-      console.log("Profile image upload error:", error);
-
-      alert("Profile image upload failed!");
-
-      return profileImage;
-    } finally {
-      setUploadingProfileImage(false);
-    }
-  };
-
   const handleSaveProfile = async (e) => {
     e.preventDefault();
 
     let imageUrl = profileImage;
 
     if (selectedProfileImage) {
-      imageUrl = await uploadProfileImage();
+      setUploadingProfileImage(true);
+      imageUrl = await uploadImageFile(selectedProfileImage);
+      setUploadingProfileImage(false);
     }
 
     try {
@@ -870,6 +871,8 @@ function Admin() {
             setTechnology("");
             setGithubLink("");
             setLiveLink("");
+            setProjectImage("");
+            setSelectedProjectImage(null);
           }}
         >
           Add Project
@@ -1131,8 +1134,40 @@ function Admin() {
               onChange={(e) => setLiveLink(e.target.value)}
             />
 
-            <button type="submit">
-              {editingProjectId ? "Update Project" : "Save Project"}
+            <label>Project Image</label>
+
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleProjectImageSelect}
+            />
+
+            {selectedProjectImage && (
+              <p>Selected: {selectedProjectImage.name}</p>
+            )}
+
+            {projectImage && !selectedProjectImage && (
+              <div>
+                <p>Current Project Image:</p>
+
+                <img
+                  src={projectImage}
+                  alt={name}
+                  style={{
+                    width: "200px",
+                    display: "block",
+                    marginBottom: "10px",
+                  }}
+                />
+              </div>
+            )}
+
+            <button type="submit" disabled={uploadingProjectImage}>
+              {uploadingProjectImage
+                ? "Uploading..."
+                : editingProjectId
+                ? "Update Project"
+                : "Save Project"}
             </button>
 
             <button
@@ -1140,6 +1175,7 @@ function Admin() {
               onClick={() => {
                 setShowProjectForm(false);
                 setEditingProjectId(null);
+                setSelectedProjectImage(null);
               }}
             >
               Cancel
@@ -1166,6 +1202,18 @@ function Admin() {
                 <p>
                   <strong>Technology:</strong> {project.technology}
                 </p>
+
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    style={{
+                      width: "200px",
+                      marginTop: "10px",
+                      display: "block",
+                    }}
+                  />
+                )}
 
                 {project.github_link && (
                   <p>GitHub: {project.github_link}</p>

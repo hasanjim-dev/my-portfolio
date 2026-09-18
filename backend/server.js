@@ -171,11 +171,12 @@ app.post("/projects", (req, res) => {
     description,
     technology,
     github_link,
-    live_link
+    live_link,
+    image
   } = req.body;
 
   const sql =
-    "INSERT INTO projects (name, description, technology, github_link, live_link) VALUES (?, ?, ?, ?, ?)";
+    "INSERT INTO projects (name, description, technology, github_link, live_link, image) VALUES (?, ?, ?, ?, ?, ?)";
 
   db.query(
     sql,
@@ -184,7 +185,8 @@ app.post("/projects", (req, res) => {
       description,
       technology,
       github_link,
-      live_link
+      live_link,
+      image
     ],
     (err, result) => {
       if (err) {
@@ -241,11 +243,12 @@ app.put("/projects/:id", (req, res) => {
     description,
     technology,
     github_link,
-    live_link
+    live_link,
+    image
   } = req.body;
 
   const sql =
-    "UPDATE projects SET name = ?, description = ?, technology = ?, github_link = ?, live_link = ? WHERE id = ?";
+    "UPDATE projects SET name = ?, description = ?, technology = ?, github_link = ?, live_link = ?, image = ? WHERE id = ?";
 
   db.query(
     sql,
@@ -255,6 +258,7 @@ app.put("/projects/:id", (req, res) => {
       technology,
       github_link,
       live_link,
+      image,
       projectId
     ],
     (err, result) => {
