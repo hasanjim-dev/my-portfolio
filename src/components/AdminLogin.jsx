@@ -1,30 +1,54 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API = "https://my-portfolio-backend-u8gq.onrender.com";
+
 function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (username === "jim" && password === "jim123") {
+    setLoading(true);
+
+    try {
+      const response = await fetch(`${API}/admin/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || "Invalid username or password!");
+        return;
+      }
+
       localStorage.setItem("adminLoggedIn", "true");
       navigate("/admin");
-    } else {
-      alert("Invalid username or password!");
+    } catch (error) {
+      console.log("Login error:", error);
+      alert("Cannot connect to server. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="admin-login">
-
       <h1>Admin Login</h1>
 
       <form onSubmit={handleLogin}>
-
         <input
           type="text"
           placeholder="Username"
@@ -41,12 +65,10 @@ function AdminLogin() {
           required
         />
 
-        <button type="submit">
-          Login
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
         </button>
-
       </form>
-
     </div>
   );
 }

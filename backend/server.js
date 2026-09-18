@@ -108,7 +108,10 @@ app.get("/", (req, res) => {
 app.post("/admin/login", (req, res) => {
   const { username, password } = req.body;
 
-  if (username === "jim" && password === "jim123") {
+  if (
+    username === process.env.ADMIN_USERNAME &&
+    password === process.env.ADMIN_PASSWORD
+  ) {
     return res.json({
       message: "Login successful!",
       user: {
