@@ -26,42 +26,57 @@ function Projects() {
         ) : (
           <div className="projects-list">
 
-            {projects.map((project) => (
-              <div className="project-card" key={project.id}>
+            {projects.map((project, index) => (
+              <div
+                className={`project-row ${index % 2 === 1 ? "project-row-reverse" : ""}`}
+                key={project.id}
+              >
 
                 {project.image && (
-                  <div className="project-image-wrap">
-                    <img src={project.image} alt={project.name} />
+                  <div className="project-image-big-wrap">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="project-image-big"
+                    />
                   </div>
                 )}
 
-                <h3>{project.name}</h3>
+                <div className="project-info">
 
-                <p>{project.description}</p>
+                  <span className="project-tag-label">FEATURED PROJECT</span>
 
-                {project.technology && (
-                  <div className="tech-tags">
-                    {project.technology.split(",").map((tech, index) => (
-                      <span className="tech-tag" key={index}>
-                        {tech.trim()}
-                      </span>
-                    ))}
+                  <h3>{project.name}</h3>
+
+                  <div className="project-description-box">
+                    <p>{project.description}</p>
                   </div>
-                )}
 
-                <div className="project-links">
-
-                  {project.github_link && (
-                    <a href={project.github_link} target="_blank" rel="noopener noreferrer" title="View Code">
-                      <FaGithub /> Code
-                    </a>
+                  {project.technology && (
+                    <div className="tech-tags">
+                      {project.technology.split(",").map((tech, i) => (
+                        <span className="tech-tag" key={i}>
+                          {tech.trim()}
+                        </span>
+                      ))}
+                    </div>
                   )}
 
-                  {project.live_link && (
-                    <a href={project.live_link} target="_blank" rel="noopener noreferrer" title="Live Demo">
-                      <FaExternalLinkAlt /> Live
-                    </a>
-                  )}
+                  <div className="project-links">
+
+                    {project.github_link && (
+                      <a href={project.github_link} target="_blank" rel="noopener noreferrer" title="View Code">
+                        <FaGithub /> Code
+                      </a>
+                    )}
+
+                    {project.live_link && (
+                      <a href={project.live_link} target="_blank" rel="noopener noreferrer" title="Live Demo">
+                        <FaExternalLinkAlt /> Live
+                      </a>
+                    )}
+
+                  </div>
 
                 </div>
 
