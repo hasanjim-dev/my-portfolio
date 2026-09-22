@@ -864,24 +864,239 @@ section h2::after {
   }
 }
 
-/* ===== PROJECTS SECTION - WIDER LAYOUT LIKE MUBIN ===== */
+
+/* ===== PROJECTS SECTION - MUBIN STYLE FINAL ===== */
+
 #projects .projects-content {
-  max-width: 100%;
-  margin: 0;
-  text-align: left;
+  max-width: 1250px;
+  margin: 0 auto;
+  text-align: center;
 }
 
+/* PROJECT TITLE - CENTER */
+
 #projects h2 {
-  text-align: left;
-  margin-left: 0;
+  text-align: center;
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 80px;
+  position: relative;
 }
 
 #projects h2::after {
-  left: 0;
-  transform: none;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65px;
+  height: 4px;
+  bottom: -18px;
 }
 
-.project-image-big-wrap {
-  flex: 2.2;
-  min-width: 420px;
+/* PROJECT LIST */
+
+#projects .projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+  margin-top: 0;
+}
+
+/* PROJECT ROW */
+
+#projects .project-row,
+#projects .project-row-reverse {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.85fr);
+  align-items: center;
+  gap: 55px;
+  width: 100%;
+}
+
+/* ALTERNATE PROJECT */
+
+#projects .project-row-reverse {
+  direction: rtl;
+}
+
+#projects .project-row-reverse > * {
+  direction: ltr;
+}
+
+/* PROJECT IMAGE */
+
+#projects .project-image-big-wrap {
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 16 / 10;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--code-bg, #1a1a1f);
+  box-shadow: var(--shadow);
+}
+
+#projects .project-image-big {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+
+#projects .project-image-big-wrap:hover .project-image-big {
+  transform: scale(1.04);
+}
+
+/* PROJECT INFORMATION */
+
+#projects .project-info {
+  min-width: 0;
+  text-align: left;
+}
+
+#projects .project-tag-label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+#projects .project-info h3 {
+  font-size: clamp(28px, 2.6vw, 40px);
+  font-weight: 900;
+  line-height: 1.08;
+  color: var(--text-h);
+  margin: 0 0 24px;
+}
+
+/* DESCRIPTION BOX */
+
+#projects .project-description-box {
+  background: var(--code-bg, #1a1a1f);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+#projects .project-description-box p {
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* TECHNOLOGY TAGS */
+
+#projects .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 18px 0;
+}
+
+#projects .tech-tag {
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* PROJECT LINKS */
+
+#projects .project-links {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+#projects .project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+#projects .project-links a:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+  #projects .projects-content {
+    max-width: 100%;
+  }
+
+  #projects .project-row,
+  #projects .project-row-reverse {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: stretch;
+    direction: ltr;
+  }
+
+  #projects .project-image-big-wrap {
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  #projects .project-info {
+    text-align: left;
+  }
+
+  #projects .project-info h3 {
+    font-size: 32px;
+  }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 550px) {
+
+  #projects {
+    padding: 70px 20px;
+  }
+
+  #projects h2 {
+    font-size: 34px;
+    text-align: center;
+    margin-bottom: 55px;
+  }
+
+  #projects .projects-list {
+    gap: 70px;
+  }
+
+  #projects .project-image-big-wrap {
+    border-radius: 12px;
+    aspect-ratio: 16 / 10;
+  }
+
+  #projects .project-info h3 {
+    font-size: 28px;
+  }
+
+  #projects .project-description-box {
+    padding: 20px;
+  }
+
+  #projects .project-description-box p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
 }
