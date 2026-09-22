@@ -15,7 +15,7 @@ function ParticleBackground() {
         fullScreen: { enable: true, zIndex: -1 },
         background: { color: "transparent" },
         particles: {
-          number: { value: 450, density: { enable: true, area: 900 } },
+          number: { value: 600, density: { enable: true, area: 900 } },
           color: { value: "#7c1fd6" },
           shape: { type: "circle" },
           opacity: {
