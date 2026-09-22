@@ -863,3 +863,25 @@ section h2::after {
     width: 100%;
   }
 }
+
+/* ===== PROJECTS SECTION - WIDER LAYOUT LIKE MUBIN ===== */
+#projects .projects-content {
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+#projects h2 {
+  text-align: left;
+  margin-left: 0;
+}
+
+#projects h2::after {
+  left: 0;
+  transform: none;
+}
+
+.project-image-big-wrap {
+  flex: 2.2;
+  min-width: 420px;
+}
