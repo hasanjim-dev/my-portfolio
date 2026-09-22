@@ -25,7 +25,7 @@ function ParticleBackground() {
           size: { value: { min: 0.3, max: 0.7 } },
           move: {
             enable: true,
-            speed: { min: 0.02, max: 0.08 },
+            speed: { min: 0.06, max: 0.18 },
             direction: "none",
             random: true,
             straight: false,
