@@ -15,7 +15,7 @@ function ParticleBackground() {
         fullScreen: { enable: true, zIndex: -1 },
         background: { color: "transparent" },
         particles: {
-          number: { value: 220, density: { enable: true, area: 900 } },
+          number: { value: 350, density: { enable: true, area: 900 } },
           color: { value: "#7c1fd6" },
           shape: { type: "circle" },
           opacity: {
@@ -55,7 +55,7 @@ export function FastDots() {
         fullScreen: { enable: true, zIndex: -1 },
         background: { color: "transparent" },
         particles: {
-          number: { value: 1 },
+          number: { value: 2 },
           color: { value: "#4a0f8f" },
           shape: { type: "circle" },
           opacity: { value: 0.95 },
