@@ -75,13 +75,13 @@ function Home() {
               </div>
 
               <div className="social-icons">
-                <a href="https://github.com/yourusername" target="_blank" rel="noreferrer">
+                <a href="https://github.com/hasanjim-dev" target="_blank" rel="noreferrer">
                   <FaGithub />
                 </a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/in/muntasir-hasan-jim-1804b643a/" target="_blank" rel="noreferrer">
                   <FaLinkedin />
                 </a>
-                <a href={`mailto:${profile.email || "you@example.com"}`}>
+                <a href={`mailto:${profile.email || "hasanjim2345@gmail.com"}`}>
                   <HiOutlineMail />
                 </a>
               </div>
