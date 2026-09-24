@@ -704,14 +704,14 @@ app.delete("/images/:filename", (req, res) => {
 // ==================================================
 
 app.post("/skills", (req, res) => {
-  const { name, level } = req.body;
+  const { name, level, category } = req.body;
 
   const sql =
-    "INSERT INTO skills (name, level) VALUES (?, ?)";
+    "INSERT INTO skills (name, level, category) VALUES (?, ?, ?)";
 
   db.query(
     sql,
-    [name, level],
+    [name, level, category],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -762,14 +762,14 @@ app.get("/skills", (req, res) => {
 app.put("/skills/:id", (req, res) => {
   const skillId = req.params.id;
 
-  const { name, level } = req.body;
+  const { name, level, category } = req.body;
 
   const sql =
-    "UPDATE skills SET name = ?, level = ? WHERE id = ?";
+    "UPDATE skills SET name = ?, level = ?, category = ? WHERE id = ?";
 
   db.query(
     sql,
-    [name, level, skillId],
+    [name, level, category, skillId],
     (err, result) => {
       if (err) {
         console.log(err);

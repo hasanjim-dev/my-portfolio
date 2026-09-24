@@ -48,6 +48,7 @@ function Admin() {
 
   const [skillName, setSkillName] = useState("");
   const [skillLevel, setSkillLevel] = useState("");
+  const [skillCategory, setSkillCategory] = useState("Frontend");
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [uploadingImage, setUploadingImage] = useState(false);
@@ -615,85 +616,90 @@ function Admin() {
     }
   };
 
-  const handleAddSkill = async (e) => {
-    e.preventDefault();
+const handleAddSkill = async (e) => {
+  e.preventDefault();
 
-    try {
-      const response = await fetch(`${API}/skills`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: skillName,
-          level: skillLevel,
-        }),
-      });
+  try {
+    const response = await fetch(`${API}/skills`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: skillName,
+        level: skillLevel,
+        category: skillCategory,
+      }),
+    });
 
-      const data = await response.json();
+    const data = await response.json();
 
-      alert(data.message);
+    alert(data.message);
 
-      if (response.ok) {
-        setSkillName("");
-        setSkillLevel("");
+    if (response.ok) {
+      setSkillName("");
+      setSkillLevel("");
+      setSkillCategory("Frontend");
 
-        setShowSkillForm(false);
+      setShowSkillForm(false);
 
-        loadSkills();
-      }
-    } catch (error) {
-      console.log("Skill add error:", error);
-
-      alert("Skill add failed!");
+      loadSkills();
     }
-  };
+  } catch (error) {
+    console.log("Skill add error:", error);
 
-  const handleEditSkill = (skill) => {
-    setEditingSkillId(skill.id);
+    alert("Skill add failed!");
+  }
+};
 
-    setSkillName(skill.name);
-    setSkillLevel(skill.level || "");
+ const handleEditSkill = (skill) => {
+  setEditingSkillId(skill.id);
 
-    setShowSkillForm(true);
-    setShowSkills(false);
-  };
+  setSkillName(skill.name);
+  setSkillLevel(skill.level || "");
+  setSkillCategory(skill.category || "Frontend");
 
-  const handleUpdateSkill = async (e) => {
-    e.preventDefault();
+  setShowSkillForm(true);
+  setShowSkills(false);
+};
 
-    try {
-      const response = await fetch(`${API}/skills/${editingSkillId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: skillName,
-          level: skillLevel,
-        }),
-      });
+ const handleUpdateSkill = async (e) => {
+  e.preventDefault();
 
-      const data = await response.json();
+  try {
+    const response = await fetch(`${API}/skills/${editingSkillId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: skillName,
+        level: skillLevel,
+        category: skillCategory,
+      }),
+    });
 
-      alert(data.message);
+    const data = await response.json();
 
-      if (response.ok) {
-        setEditingSkillId(null);
+    alert(data.message);
 
-        setSkillName("");
-        setSkillLevel("");
+    if (response.ok) {
+      setEditingSkillId(null);
 
-        setShowSkillForm(false);
+      setSkillName("");
+      setSkillLevel("");
+      setSkillCategory("Frontend");
 
-        loadSkills();
-      }
-    } catch (error) {
-      console.log("Skill update error:", error);
+      setShowSkillForm(false);
 
-      alert("Skill update failed!");
+      loadSkills();
     }
-  };
+  } catch (error) {
+    console.log("Skill update error:", error);
+
+    alert("Skill update failed!");
+  }
+};
 
   const handleDeleteSkill = async (id) => {
     const confirmDelete = window.confirm(
@@ -954,22 +960,26 @@ function Admin() {
           }}
         >
           Add Skill
-        </button>
+       <button
+  onClick={() => {
+    setShowSkillForm(true);
+    setShowSkills(false);
+    setShowProjectForm(false);
+    setShowProjects(false);
+    setShowCertificateForm(false);
+    setShowCertificates(false);
+    setShowProfileForm(false);
+    setShowImages(false);
 
-        <button
-          onClick={() => {
-            setShowSkills(true);
-            setShowSkillForm(false);
-            setShowProjectForm(false);
-            setShowProjects(false);
-            setShowCertificateForm(false);
-            setShowCertificates(false);
-            setShowProfileForm(false);
-            setShowImages(false);
+    setEditingSkillId(null);
 
-            loadSkills();
-          }}
-        >
+    setSkillName("");
+    setSkillLevel("");
+    setSkillCategory("Frontend");
+  }}
+>
+  Add Skill
+</button>
           Manage Skills
         </button>
 
@@ -1370,74 +1380,94 @@ function Admin() {
 
       {/* SKILL FORM */}
 
-      {showSkillForm && (
-        <div className="skill-form">
-          <h2>{editingSkillId ? "Edit Skill" : "Add New Skill"}</h2>
+      {/* SKILL FORM */}
 
-          <form
-            onSubmit={editingSkillId ? handleUpdateSkill : handleAddSkill}
-          >
-            <input
-              type="text"
-              placeholder="Skill Name"
-              value={skillName}
-              onChange={(e) => setSkillName(e.target.value)}
-              required
-            />
+{showSkillForm && (
+  <div className="skill-form">
+    <h2>{editingSkillId ? "Edit Skill" : "Add New Skill"}</h2>
 
-            <input
-              type="text"
-              placeholder="Skill Level"
-              value={skillLevel}
-              onChange={(e) => setSkillLevel(e.target.value)}
-            />
+    <form
+      onSubmit={editingSkillId ? handleUpdateSkill : handleAddSkill}
+    >
+      <input
+        type="text"
+        placeholder="Skill Name"
+        value={skillName}
+        onChange={(e) => setSkillName(e.target.value)}
+        required
+      />
 
-            <button type="submit">
-              {editingSkillId ? "Update Skill" : "Save Skill"}
-            </button>
+      <input
+        type="text"
+        placeholder="Skill Level"
+        value={skillLevel}
+        onChange={(e) => setSkillLevel(e.target.value)}
+      />
 
-            <button
-              type="button"
-              onClick={() => {
-                setShowSkillForm(false);
-                setEditingSkillId(null);
-                setSkillName("");
-                setSkillLevel("");
-              }}
-            >
-              Cancel
-            </button>
-          </form>
-        </div>
-      )}
+      <select
+        value={skillCategory}
+        onChange={(e) => setSkillCategory(e.target.value)}
+        required
+      >
+        <option value="Frontend">Frontend</option>
+        <option value="Backend">Backend</option>
+        <option value="Database">Database</option>
+        <option value="Tools">Tools</option>
+      </select>
+
+      <button type="submit">
+        {editingSkillId ? "Update Skill" : "Save Skill"}
+      </button>
+
+      <button
+        type="button"
+        onClick={() => {
+          setShowSkillForm(false);
+          setEditingSkillId(null);
+          setSkillName("");
+          setSkillLevel("");
+          setSkillCategory("Frontend");
+        }}
+      >
+        Cancel
+      </button>
+    </form>
+  </div>
+)}
 
       {/* SKILL LIST */}
 
-      {showSkills && (
-        <div className="skills-list">
-          <h2>Manage Skills</h2>
+    {/* SKILL LIST */}
 
-          {skills.length === 0 ? (
-            <p>No skills found.</p>
-          ) : (
-            skills.map((skill) => (
-              <div key={skill.id} className="skill-item">
-                <h3>{skill.name}</h3>
+{showSkills && (
+  <div className="skills-list">
+    <h2>Manage Skills</h2>
 
-                <p>
-                  <strong>Level:</strong> {skill.level}
-                </p>
+    {skills.length === 0 ? (
+      <p>No skills found.</p>
+    ) : (
+      skills.map((skill) => (
+        <div key={skill.id} className="skill-item">
+          <h3>{skill.name}</h3>
 
-                <button onClick={() => handleEditSkill(skill)}>Edit</button>
+          <p>
+            <strong>Level:</strong> {skill.level}
+          </p>
 
-                <button onClick={() => handleDeleteSkill(skill.id)}>
-                  Delete
-                </button>
-              </div>
-            ))
-          )}
+          <p>
+            <strong>Category:</strong> {skill.category}
+          </p>
+
+          <button onClick={() => handleEditSkill(skill)}>Edit</button>
+
+          <button onClick={() => handleDeleteSkill(skill.id)}>
+            Delete
+          </button>
         </div>
-      )}
+      ))
+    )}
+  </div>
+)}
 
       {/* MANAGE IMAGES */}
 

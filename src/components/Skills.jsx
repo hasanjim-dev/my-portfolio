@@ -32,33 +32,12 @@ const iconMap = {
   "git": <FaGitAlt />,
 };
 
-// skill নাম দেখে category বের করার লজিক (partial match)
-const categoryKeywords = {
-  Frontend: ["html", "css", "react", "javascript", "js", "typescript", "tailwind"],
-  Backend: ["node", "express", "php", "java", "c++", "c", "python"],
-  Database: ["mongodb", "mysql", "postgresql", "firebase", "sql"],
-  Tools: ["git", "github", "vscode", "figma", "postman"],
-};
-
 const categoryIcons = {
   Frontend: <FaDesktop />,
   Backend: <FaTools />,
   Database: <FaDatabase />,
   Tools: <FaTools />,
 };
-
-function getCategory(name) {
-  const key = name?.toLowerCase().trim().replace(/\s+/g, "");
-  for (const category in categoryKeywords) {
-    const found = categoryKeywords[category].some((keyword) =>
-      key.includes(keyword.replace(/\s+/g, ""))
-    );
-    if (found) {
-      return category;
-    }
-  }
-  return "Tools";
-}
 
 function getIcon(name) {
   const key = name?.toLowerCase().trim();
@@ -83,7 +62,7 @@ function Skills() {
   const categories = ["Frontend", "Backend", "Database", "Tools"];
 
   const groupedSkills = categories.reduce((acc, cat) => {
-    acc[cat] = skills.filter((skill) => getCategory(skill.name) === cat);
+    acc[cat] = skills.filter((skill) => skill.category === cat);
     return acc;
   }, {});
 
