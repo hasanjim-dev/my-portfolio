@@ -16,11 +16,11 @@ function About() {
 
         <div className="about-highlights">
           <div className="highlight-card">
-            <h3>3.5+</h3>
+            <h3>2+</h3>
             <p>Years Learning</p>
           </div>
           <div className="highlight-card">
-            <h3>10+</h3>
+            <h3>3+</h3>
             <p>Projects Built</p>
           </div>
           <div className="highlight-card">
