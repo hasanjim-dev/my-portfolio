@@ -66,7 +66,7 @@ function Contact() {
           </h2>
 
           <p>
-            If you want to work with me or know more about my projects,
+            know more about my projects,
             feel free to reach out!
           </p>
 
