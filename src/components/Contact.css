@@ -6,10 +6,12 @@
 .contact-content {
   max-width: 1100px;
   margin: 0 auto;
+
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 40px;
+
+  gap: 70px;
   flex-wrap: wrap;
 }
 
@@ -54,12 +56,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 44px;
   height: 44px;
+
   border-radius: 10px;
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
+
+  background: color-mix(
+    in srgb,
+    var(--accent) 15%,
+    transparent
+  );
+
   color: var(--accent);
   font-size: 18px;
+
   flex-shrink: 0;
 }
 
@@ -77,6 +88,11 @@
   color: var(--text-h);
 }
 
+
+/* =========================
+   FIND ME
+========================= */
+
 .find-me-label {
   font-size: 12px;
   letter-spacing: 1px;
@@ -88,14 +104,19 @@
 .social-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+
+  gap: 22px;
+
   margin-bottom: 35px;
 }
 
 .social-row a {
   color: var(--text);
   font-size: 20px;
-  transition: color 0.2s, transform 0.2s;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .social-row a:hover {
@@ -103,78 +124,17 @@
   transform: translateY(-3px);
 }
 
-.contact-right {
-  flex: 1;
-  min-width: 280px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 30px;
-}
 
-.orbit-circle {
-  position: relative;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--accent) 25%, transparent) 0%,
-    transparent 70%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.orbit-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-size: 22px;
-  animation: orbit-glow 2.5s ease-in-out infinite;
-}
-
-.orbit-icon {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  color: var(--text-h);
-  font-size: 16px;
-  animation: orbit-float 3.5s ease-in-out infinite;
-}
-
-.orbit-icon-1 { top: 0; left: 40%; animation-delay: 0s; }
-.orbit-icon-2 { top: 15%; right: 0; animation-delay: 0.6s; }
-.orbit-icon-3 { bottom: 10%; left: 0; animation-delay: 1.2s; }
-.orbit-icon-4 { bottom: 0; left: 35%; animation-delay: 1.8s; }
-.orbit-icon-5 { top: 40%; right: -5%; animation-delay: 2.4s; }
-
-@keyframes orbit-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes orbit-glow {
-  0%, 100% { box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 60%, transparent); }
-  50% { box-shadow: 0 0 25px color-mix(in srgb, var(--accent) 90%, transparent); }
-}
+/* =========================
+   CONTACT FORM
+========================= */
 
 .contact-form {
   display: flex;
   flex-direction: column;
+
   gap: 14px;
+
   max-width: 480px;
   margin-top: 10px;
 }
@@ -182,13 +142,19 @@
 .contact-form input,
 .contact-form textarea {
   padding: 14px 16px;
+
   background: var(--code-bg, #1a1a1f);
+
   border: 1px solid var(--border);
   border-radius: 10px;
+
   color: var(--text-h);
+
   font-size: 15px;
   font-family: inherit;
+
   outline: none;
+
   transition: border-color 0.2s;
 }
 
@@ -210,27 +176,314 @@
 
 .contact-form button {
   padding: 14px 30px;
+
   font-size: 16px;
   font-weight: 600;
+
   border: none;
+
   background: var(--accent);
   color: white;
+
   cursor: pointer;
+
   border-radius: 10px;
-  box-shadow: 0 8px 24px -8px var(--accent);
-  transition: transform 0.2s, box-shadow 0.2s;
+
+  box-shadow:
+    0 8px 24px -8px var(--accent);
+
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+
   align-self: flex-start;
 }
 
 .contact-form button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 30px -6px var(--accent);
+
+  box-shadow:
+    0 12px 30px -6px var(--accent);
 }
 
+
+/* =========================
+   RIGHT ORBIT AREA
+========================= */
+
+.contact-right {
+  flex: 1;
+
+  min-width: 360px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 0;
+}
+
+
+/* Main circle */
+
+.orbit-circle {
+  position: relative;
+
+  width: 340px;
+  height: 340px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: radial-gradient(
+    circle,
+    color-mix(
+      in srgb,
+      var(--accent) 20%,
+      transparent
+    ) 0%,
+    color-mix(
+      in srgb,
+      var(--accent) 8%,
+      transparent
+    ) 35%,
+    transparent 70%
+  );
+
+  filter: drop-shadow(
+    0 0 35px
+    color-mix(
+      in srgb,
+      var(--accent) 15%,
+      transparent
+    )
+  );
+}
+
+
+/* Outer rings */
+
+.orbit-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+.orbit-ring-1 {
+  width: 245px;
+  height: 245px;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--accent) 20%,
+      transparent
+    );
+}
+
+.orbit-ring-2 {
+  width: 315px;
+  height: 315px;
+
+  border: 1px dashed
+    color-mix(
+      in srgb,
+      var(--accent) 25%,
+      transparent
+    );
+
+  animation: orbit-rotate 20s linear infinite;
+}
+
+
+/* Center location */
+
+.orbit-center {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 68px;
+  height: 68px;
+
+  border-radius: 50%;
+
+  background: var(--accent);
+
+  color: #fff;
+
+  font-size: 26px;
+
+  box-shadow:
+    0 0 0 12px
+      color-mix(
+        in srgb,
+        var(--accent) 12%,
+        transparent
+      ),
+    0 0 35px
+      color-mix(
+        in srgb,
+        var(--accent) 60%,
+        transparent
+      );
+
+  animation: orbit-glow 2.5s ease-in-out infinite;
+}
+
+
+/* Orbit icons */
+
+.orbit-icon {
+  position: absolute;
+  z-index: 6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  border-radius: 12px;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+
+  color: var(--text-h);
+
+  font-size: 18px;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.18);
+
+  animation: orbit-float 3.5s ease-in-out infinite;
+}
+
+
+/* Individual positions */
+
+.orbit-icon-1 {
+  top: 4%;
+  left: 39%;
+
+  animation-delay: 0s;
+}
+
+.orbit-icon-2 {
+  top: 23%;
+  right: 3%;
+
+  animation-delay: 0.6s;
+}
+
+.orbit-icon-3 {
+  bottom: 18%;
+  left: 7%;
+
+  animation-delay: 1.2s;
+}
+
+.orbit-icon-4 {
+  bottom: 4%;
+  left: 38%;
+
+  animation-delay: 1.8s;
+}
+
+.orbit-icon-5 {
+  top: 46%;
+  right: -2%;
+
+  animation-delay: 2.4s;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes orbit-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes orbit-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 12px
+        color-mix(
+          in srgb,
+          var(--accent) 12%,
+          transparent
+        ),
+      0 0 15px
+        color-mix(
+          in srgb,
+          var(--accent) 50%,
+          transparent
+        );
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 15px
+        color-mix(
+          in srgb,
+          var(--accent) 15%,
+          transparent
+        ),
+      0 0 40px
+        color-mix(
+          in srgb,
+          var(--accent) 80%,
+          transparent
+        );
+  }
+}
+
+@keyframes orbit-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 700px) {
+
+  #contact {
+    padding: 80px 20px;
+  }
+
   .contact-content {
     flex-direction: column;
-    text-align: left;
+    align-items: flex-start;
+
+    gap: 50px;
   }
 
   .contact-left h2 {
@@ -238,6 +491,26 @@
   }
 
   .contact-right {
-    display: none;
+    width: 100%;
+    min-width: 0;
+
+    display: flex;
+
+    margin-top: 20px;
+  }
+
+  .orbit-circle {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orbit-ring-1 {
+    width: 215px;
+    height: 215px;
+  }
+
+  .orbit-ring-2 {
+    width: 275px;
+    height: 275px;
   }
 }
