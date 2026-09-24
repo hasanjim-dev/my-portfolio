@@ -66,7 +66,7 @@ function Contact() {
           </h2>
 
           <p>
-            know more about my projects,
+            Always eager to take on new challenges and build impactful digital experiences. If you have any idea,
             feel free to reach out!
           </p>
 
