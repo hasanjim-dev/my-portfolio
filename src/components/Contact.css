@@ -1,7 +1,16 @@
+/* =========================================================
+   CONTACT SECTION
+========================================================= */
+
 #contact {
   padding: 100px 20px;
   overflow: hidden;
 }
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
 
 .contact-content {
   max-width: 1100px;
@@ -12,45 +21,75 @@
   justify-content: space-between;
 
   gap: 70px;
+
   flex-wrap: wrap;
 }
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
 
 .contact-left {
   flex: 1;
   min-width: 300px;
 }
 
+
+/* Heading */
+
 .contact-left h2 {
   font-size: 42px;
   font-weight: 800;
   line-height: 1.2;
+
   color: var(--text-h);
+
   margin-bottom: 20px;
 }
+
 
 .contact-left h2 .highlight {
   color: var(--accent);
 }
 
+
+/* Description */
+
 .contact-left > p {
   font-size: 16px;
+
   color: var(--text);
+
   max-width: 480px;
+
   margin-bottom: 35px;
+
+  line-height: 1.7;
 }
+
+
+/* =========================================================
+   CONTACT INFORMATION
+========================================================= */
 
 .contact-info {
   display: flex;
   flex-direction: column;
+
   gap: 22px;
+
   margin-bottom: 40px;
 }
+
 
 .info-item {
   display: flex;
   align-items: center;
+
   gap: 16px;
 }
+
 
 .info-icon {
   display: flex;
@@ -69,49 +108,70 @@
   );
 
   color: var(--accent);
+
   font-size: 18px;
 
   flex-shrink: 0;
 }
 
+
 .info-label {
   font-size: 12px;
+
   letter-spacing: 1px;
+
   color: var(--text);
+
   opacity: 0.7;
+
   margin-bottom: 2px;
 }
 
+
 .info-value {
   font-size: 16px;
+
   font-weight: 600;
+
   color: var(--text-h);
 }
 
 
-/* =========================
-   FIND ME
-========================= */
+/* =========================================================
+   FIND ME ON
+========================================================= */
 
 .find-me-label {
   font-size: 12px;
+
   letter-spacing: 1px;
+
   color: var(--text);
+
   opacity: 0.7;
+
   margin-bottom: 14px;
 }
 
+
 .social-row {
   display: flex;
+
   flex-wrap: wrap;
 
-  gap: 22px;
+  gap: 20px;
 
   margin-bottom: 35px;
 }
 
+
 .social-row a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   color: var(--text);
+
   font-size: 20px;
 
   transition:
@@ -119,15 +179,17 @@
     transform 0.2s ease;
 }
 
+
 .social-row a:hover {
   color: var(--accent);
+
   transform: translateY(-3px);
 }
 
 
-/* =========================
+/* =========================================================
    CONTACT FORM
-========================= */
+========================================================= */
 
 .contact-form {
   display: flex;
@@ -136,8 +198,10 @@
   gap: 14px;
 
   max-width: 480px;
+
   margin-top: 10px;
 }
+
 
 .contact-form input,
 .contact-form textarea {
@@ -146,11 +210,13 @@
   background: var(--code-bg, #1a1a1f);
 
   border: 1px solid var(--border);
+
   border-radius: 10px;
 
   color: var(--text-h);
 
   font-size: 15px;
+
   font-family: inherit;
 
   outline: none;
@@ -158,31 +224,39 @@
   transition: border-color 0.2s;
 }
 
+
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
   color: var(--text);
+
   opacity: 0.6;
 }
+
 
 .contact-form input:focus,
 .contact-form textarea:focus {
   border-color: var(--accent);
 }
 
+
 .contact-form textarea {
   min-height: 120px;
+
   resize: vertical;
 }
+
 
 .contact-form button {
   padding: 14px 30px;
 
   font-size: 16px;
+
   font-weight: 600;
 
   border: none;
 
   background: var(--accent);
+
   color: white;
 
   cursor: pointer;
@@ -199,6 +273,7 @@
   align-self: flex-start;
 }
 
+
 .contact-form button:hover {
   transform: translateY(-3px);
 
@@ -207,9 +282,9 @@
 }
 
 
-/* =========================
-   RIGHT ORBIT AREA
-========================= */
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
 
 .contact-right {
   flex: 1;
@@ -217,14 +292,22 @@
   min-width: 360px;
 
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 
-  margin-top: 0;
+  /*
+    Circle একটু উপরে রাখা হয়েছে
+    যাতে পুরো section-এর মাঝখানে সুন্দরভাবে থাকে।
+  */
+  margin-top: -45px;
 }
 
 
-/* Main circle */
+/* =========================================================
+   MAIN ORBIT CIRCLE
+========================================================= */
 
 .orbit-circle {
   position: relative;
@@ -235,21 +318,26 @@
   border-radius: 50%;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   background: radial-gradient(
     circle,
+
     color-mix(
       in srgb,
       var(--accent) 20%,
       transparent
     ) 0%,
+
     color-mix(
       in srgb,
       var(--accent) 8%,
       transparent
     ) 35%,
+
     transparent 70%
   );
 
@@ -264,7 +352,9 @@
 }
 
 
-/* Outer rings */
+/* =========================================================
+   ORBIT RINGS
+========================================================= */
 
 .orbit-ring {
   position: absolute;
@@ -274,8 +364,12 @@
   pointer-events: none;
 }
 
+
+/* Inner ring */
+
 .orbit-ring-1 {
   width: 245px;
+
   height: 245px;
 
   border: 1px solid
@@ -286,8 +380,12 @@
     );
 }
 
+
+/* Outer ring */
+
 .orbit-ring-2 {
   width: 315px;
+
   height: 315px;
 
   border: 1px dashed
@@ -297,21 +395,28 @@
       transparent
     );
 
-  animation: orbit-rotate 20s linear infinite;
+  animation:
+    orbit-rotate 20s linear infinite;
 }
 
 
-/* Center location */
+/* =========================================================
+   CENTER LOCATION ICON
+========================================================= */
 
 .orbit-center {
   position: relative;
+
   z-index: 5;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   width: 68px;
+
   height: 68px;
 
   border-radius: 50%;
@@ -323,12 +428,14 @@
   font-size: 26px;
 
   box-shadow:
+
     0 0 0 12px
       color-mix(
         in srgb,
         var(--accent) 12%,
         transparent
       ),
+
     0 0 35px
       color-mix(
         in srgb,
@@ -336,21 +443,28 @@
         transparent
       );
 
-  animation: orbit-glow 2.5s ease-in-out infinite;
+  animation:
+    orbit-glow 2.5s ease-in-out infinite;
 }
 
 
-/* Orbit icons */
+/* =========================================================
+   ORBIT ICONS
+========================================================= */
 
 .orbit-icon {
   position: absolute;
+
   z-index: 6;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   width: 46px;
+
   height: 46px;
 
   border-radius: 12px;
@@ -366,53 +480,77 @@
   box-shadow:
     0 8px 25px rgba(0, 0, 0, 0.18);
 
-  animation: orbit-float 3.5s ease-in-out infinite;
+  animation:
+    orbit-float 3.5s ease-in-out infinite;
 }
 
 
-/* Individual positions */
+/* =========================================================
+   ORBIT ICON POSITIONS
+========================================================= */
+
+
+/* Email */
 
 .orbit-icon-1 {
   top: 4%;
+
   left: 39%;
 
   animation-delay: 0s;
 }
 
+
+/* Discord */
+
 .orbit-icon-2 {
   top: 23%;
+
   right: 3%;
 
   animation-delay: 0.6s;
 }
 
+
+/* GitHub */
+
 .orbit-icon-3 {
   bottom: 18%;
+
   left: 7%;
 
   animation-delay: 1.2s;
 }
 
+
+/* LinkedIn */
+
 .orbit-icon-4 {
   bottom: 4%;
+
   left: 38%;
 
   animation-delay: 1.8s;
 }
 
+
+/* Phone */
+
 .orbit-icon-5 {
   top: 46%;
+
   right: -2%;
 
   animation-delay: 2.4s;
 }
 
 
-/* =========================
+/* =========================================================
    ANIMATIONS
-========================= */
+========================================================= */
 
 @keyframes orbit-float {
+
   0%,
   100% {
     transform: translateY(0);
@@ -423,16 +561,21 @@
   }
 }
 
+
 @keyframes orbit-glow {
+
   0%,
   100% {
+
     box-shadow:
+
       0 0 0 12px
         color-mix(
           in srgb,
           var(--accent) 12%,
           transparent
         ),
+
       0 0 15px
         color-mix(
           in srgb,
@@ -442,13 +585,16 @@
   }
 
   50% {
+
     box-shadow:
+
       0 0 0 15px
         color-mix(
           in srgb,
           var(--accent) 15%,
           transparent
         ),
+
       0 0 40px
         color-mix(
           in srgb,
@@ -458,7 +604,9 @@
   }
 }
 
+
 @keyframes orbit-rotate {
+
   from {
     transform: rotate(0deg);
   }
@@ -469,9 +617,9 @@
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 700px) {
 
@@ -479,19 +627,24 @@
     padding: 80px 20px;
   }
 
+
   .contact-content {
     flex-direction: column;
+
     align-items: flex-start;
 
     gap: 50px;
   }
 
+
   .contact-left h2 {
     font-size: 32px;
   }
 
+
   .contact-right {
     width: 100%;
+
     min-width: 0;
 
     display: flex;
@@ -499,18 +652,24 @@
     margin-top: 20px;
   }
 
+
   .orbit-circle {
     width: 300px;
+
     height: 300px;
   }
 
+
   .orbit-ring-1 {
     width: 215px;
+
     height: 215px;
   }
 
+
   .orbit-ring-2 {
     width: 275px;
+
     height: 275px;
   }
 }

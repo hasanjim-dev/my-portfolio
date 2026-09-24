@@ -12,6 +12,8 @@ import {
   FaXTwitter,
   FaRedditAlien,
   FaFacebookF,
+  FaGitlab,
+  FaInstagram,
 } from "react-icons/fa6";
 
 function Contact() {
@@ -22,48 +24,56 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(
-      "https://my-portfolio-backend-u8gq.onrender.com/contact",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-        }),
-      }
-    );
+    try {
+      const response = await fetch(
+        "https://my-portfolio-backend-u8gq.onrender.com/contact",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+          }),
+        }
+      );
 
-    const data = await response.json();
+      const data = await response.json();
 
-    alert(data.message);
+      alert(data.message);
 
-    setName("");
-    setEmail("");
-    setMessage("");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
     <section id="contact">
       <div className="contact-content">
 
-        {/* LEFT SIDE */}
+        {/* ================= LEFT SIDE ================= */}
         <div className="contact-left">
+
           <h2>
             Let's Build <br />
             <span className="highlight">Something Iconic</span>
           </h2>
 
           <p>
-            know more about my projects,
+            If you want to work with me or know more about my projects,
             feel free to reach out!
           </p>
 
+          {/* ================= CONTACT INFO ================= */}
           <div className="contact-info">
 
+            {/* Email */}
             <div className="info-item">
               <span className="info-icon">
                 <FaEnvelope />
@@ -77,6 +87,7 @@ function Contact() {
               </div>
             </div>
 
+            {/* WhatsApp */}
             <div className="info-item">
               <span className="info-icon">
                 <FaWhatsapp />
@@ -90,6 +101,7 @@ function Contact() {
               </div>
             </div>
 
+            {/* Location */}
             <div className="info-item">
               <span className="info-icon">
                 <FaLocationDot />
@@ -105,9 +117,13 @@ function Contact() {
 
           </div>
 
-          {/* SOCIAL LINKS */}
+
+          {/* ================= FIND ME ON ================= */}
           <div className="find-me">
-            <p className="find-me-label">FIND ME ON</p>
+
+            <p className="find-me-label">
+              FIND ME ON
+            </p>
 
             <div className="social-row">
 
@@ -121,15 +137,30 @@ function Contact() {
                 <FaGithub />
               </a>
 
+
+              {/* GitLab
+                  Account not created yet.
+                  Add your link later. */}
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitLab"
+              >
+                <FaGitlab />
+              </a>
+
+
               {/* LinkedIn */}
               <a
-                href="https://www.linkedin.com/in/muntasir-hasan-jim-1804b643a/"
+                href="https://www.linkedin.com/in/muntasir-hasan-jim-1804b643/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin />
               </a>
+
 
               {/* Email */}
               <a
@@ -138,6 +169,7 @@ function Contact() {
               >
                 <FaEnvelope />
               </a>
+
 
               {/* Discord */}
               <a
@@ -149,6 +181,7 @@ function Contact() {
                 <FaDiscord />
               </a>
 
+
               {/* WhatsApp */}
               <a
                 href="https://wa.me/8801823137360"
@@ -159,7 +192,10 @@ function Contact() {
                 <FaWhatsapp />
               </a>
 
-              {/* X - ADD YOUR LINK LATER */}
+
+              {/* X
+                  Account not created yet.
+                  Add your link later. */}
               <a
                 href="#"
                 target="_blank"
@@ -169,7 +205,10 @@ function Contact() {
                 <FaXTwitter />
               </a>
 
-              {/* Reddit - ADD YOUR LINK LATER */}
+
+              {/* Reddit
+                  Account not created yet.
+                  Add your link later. */}
               <a
                 href="#"
                 target="_blank"
@@ -179,7 +218,23 @@ function Contact() {
                 <FaRedditAlien />
               </a>
 
-              {/* Facebook - ADD YOUR LINK LATER */}
+
+              {/* Instagram
+                  Account not created yet.
+                  Add your link later. */}
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Instagram"
+              >
+                <FaInstagram />
+              </a>
+
+
+              {/* Facebook
+                  Account not created yet.
+                  Add your link later. */}
               <a
                 href="#"
                 target="_blank"
@@ -192,8 +247,12 @@ function Contact() {
             </div>
           </div>
 
-          {/* CONTACT FORM */}
-          <form onSubmit={handleSubmit} className="contact-form">
+
+          {/* ================= CONTACT FORM ================= */}
+          <form
+            onSubmit={handleSubmit}
+            className="contact-form"
+          >
 
             <input
               type="text"
@@ -223,40 +282,52 @@ function Contact() {
             </button>
 
           </form>
+
         </div>
 
 
-        {/* RIGHT SIDE ORBIT */}
+        {/* ================= RIGHT SIDE ================= */}
         <div className="contact-right">
 
           <div className="orbit-circle">
 
-            {/* Orbit rings */}
+            {/* Outer Orbit Rings */}
             <div className="orbit-ring orbit-ring-1"></div>
+
             <div className="orbit-ring orbit-ring-2"></div>
 
-            {/* Icons */}
+
+            {/* Email */}
             <span className="orbit-icon orbit-icon-1">
               <FaEnvelope />
             </span>
 
+
+            {/* Discord */}
             <span className="orbit-icon orbit-icon-2">
               <FaDiscord />
             </span>
 
+
+            {/* GitHub */}
             <span className="orbit-icon orbit-icon-3">
               <FaGithub />
             </span>
 
+
+            {/* LinkedIn */}
             <span className="orbit-icon orbit-icon-4">
               <FaLinkedin />
             </span>
 
+
+            {/* Phone */}
             <span className="orbit-icon orbit-icon-5">
               <FaPhone />
             </span>
 
-            {/* Center */}
+
+            {/* Center Location */}
             <span className="orbit-center">
               <FaLocationDot />
             </span>
