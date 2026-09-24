@@ -136,6 +136,20 @@
   color: var(--text-h);
 }
 
+.info-link {
+  display: inline-block;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.info-link:hover {
+  color: var(--brand, #b98cff);
+
+  text-decoration: underline;
+}
+
 
 /* =========================================================
    FIND ME ON

@@ -81,9 +81,12 @@ function Contact() {
 
               <div>
                 <p className="info-label">EMAIL</p>
-                <p className="info-value">
+                <a
+                  href="mailto:hasanjim2345@gmail.com"
+                  className="info-value info-link"
+                >
                   hasanjim2345@gmail.com
-                </p>
+                </a>
               </div>
             </div>
 
@@ -95,9 +98,14 @@ function Contact() {
 
               <div>
                 <p className="info-label">WHATSAPP</p>
-                <p className="info-value">
+                <a
+                  href="https://wa.me/8801823137360"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="info-value info-link"
+                >
                   +880 1823137360
-                </p>
+                </a>
               </div>
             </div>
 
