@@ -1,0 +1,17 @@
+.site-footer {
+  width: 100%;
+
+  padding: 24px 16px;
+
+  text-align: center;
+}
+
+.site-footer p {
+  font-size: 14px;
+
+  color: var(--text);
+
+  opacity: 0.6;
+
+  margin: 0;
+}

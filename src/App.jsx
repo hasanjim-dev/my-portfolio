@@ -10,6 +10,7 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 import Admin from "./components/Admin";
 import AdminLogin from "./components/AdminLogin";
 
@@ -36,6 +37,7 @@ function Portfolio() {
       <Projects />
       <Certificates />
       <Contact />
+      <Footer />
     </div>
   );
 }
