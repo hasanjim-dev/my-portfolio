@@ -36,12 +36,12 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
 }
 
