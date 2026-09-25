@@ -62,7 +62,8 @@ html {
 @media (max-width: 700px) {
   .navbar {
     padding: 14px 20px;
-    position: relative;
+    position: sticky;
+    top: 0;
   }
 
   .menu-toggle {
